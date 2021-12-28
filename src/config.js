@@ -15,10 +15,7 @@ export const config = {
   OAuthSecret: 'cc3db76ffe9848c92d83172807eececa79f0eb22',
 
   // Your Personal Blog Title
-  title : "Saad Pasta" ,
-
-  // Your Personal Blog Subtitle
-  subtitle : "Software Developer",
+  title : "Phil Ou" ,
 
   // Header customization
   header: {

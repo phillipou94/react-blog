@@ -200,10 +200,6 @@ export default function BlogHome() {
           </Markdown>
           {reactionPopup && (
             <PostReaction>
-              {userToken
-                ? <GithubSelector onSelect={emoji => toggleReaction(emoji)} />
-                : <GithubLogin isAbsolute={false} />
-              }
             </PostReaction>
           )}
           <GithubCounter

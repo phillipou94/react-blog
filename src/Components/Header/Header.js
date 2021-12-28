@@ -1,22 +1,28 @@
 import React from 'react'
+import AvatarSrc from '../../Assets/phil_avatar.png'
 
 import {
-    HeaderContainer,
-    HeaderWrapper,
+    MainHeader,
+    TitleWrapper,
+    HeaderAvatar,
     HeaderTitle,
-    HeaderSubtitle,
-    GithubLogin
+    HeaderMenuWrapper
 } from './'
 import { config } from "../../config"
+import { HeaderMenuItem } from './HeaderMenuItem'
 
 export const Header = () => {
     return (
-        <HeaderContainer>
-            <GithubLogin isAbsolute={true} />
-            <HeaderWrapper>
+        <MainHeader>
+            <TitleWrapper>
+                <HeaderAvatar src={AvatarSrc} />
                 <HeaderTitle>{config.title}</HeaderTitle>
-                <HeaderSubtitle>{config.subtitle}</HeaderSubtitle>
-            </HeaderWrapper>
-        </HeaderContainer>
+            </TitleWrapper>
+            <HeaderMenuWrapper>
+                <HeaderMenuItem menu_item_title={"Blog"} path="#"></HeaderMenuItem>
+                <HeaderMenuItem menu_item_title={"About"} path="#"></HeaderMenuItem>
+                <HeaderMenuItem menu_item_title={"Coaching"} path="#"></HeaderMenuItem>
+            </HeaderMenuWrapper>
+        </MainHeader>
     )
 }
