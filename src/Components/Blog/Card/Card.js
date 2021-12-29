@@ -17,7 +17,7 @@ export const Card = ({ blog }) => {
   const history = useHistory();
 
   const openBlog = (title, number) => {
-    history.replace(`/blog/${title}/${number}`);
+    history.push(`/blog/${title}/${number}`);
   }
 
   useEffect(() => {
@@ -33,7 +33,7 @@ export const Card = ({ blog }) => {
   }
 
   var getDate = (blog) => {
-    var timestamp = blog.updatedAt;
+    var timestamp = blog.createdAt;
     return moment(timestamp).format(" MMM DD, YYYY")
   }
 

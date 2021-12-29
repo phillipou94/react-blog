@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { gql } from "apollo-boost";
 import { useQuery } from '@apollo/react-hooks';
+import { Helmet } from "react-helmet";
+
 
 import { config } from "../config";
 import { Header } from "../Components/Header";
@@ -31,6 +33,7 @@ const GET_POSTS = gql`
           login
         }
         updatedAt
+        createdAt
         id
       }
     }
@@ -44,6 +47,7 @@ const Blog = () => {
 
   useEffect(() => {
     if (!loading) {
+      document.title = "Phil Ou"
       if (error) {
         console.error(error)
       }

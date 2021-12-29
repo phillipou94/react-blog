@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-
 const ListItem = styled.li`
     display:inline-block;
 `
@@ -27,11 +26,7 @@ const MenuLink = styled.a`
 
 export const HeaderMenuItem = ({menu_item_title, path}) => {
 
-    const GoToPath = (path) => {
-        const history = useHistory();
-        history.push(path);
-      }
-
+    
     return (
         <ListItem><MenuLink href={path}>{menu_item_title}</MenuLink></ListItem>
     );

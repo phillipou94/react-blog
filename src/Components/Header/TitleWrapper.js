@@ -5,4 +5,7 @@ export const TitleWrapper = styled.div`
     float: left;
     display: block;
     height: 100%;
+    a {
+        text-decoration: none
+    }
 `

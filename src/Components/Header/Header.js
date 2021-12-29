@@ -23,7 +23,7 @@ export const Header = () => {
             </TitleWrapper>
             <HeaderMenuWrapper>
             <HeaderMenuItem menu_item_title={"Blog"} path="/" ></HeaderMenuItem>
-                <HeaderMenuItem menu_item_title={"About"} path={"/about"}></HeaderMenuItem>
+                <HeaderMenuItem menu_item_title={"About"} path="/about"></HeaderMenuItem>
                 <HeaderMenuItem menu_item_title={"Coaching"} path="/coaching"></HeaderMenuItem>
             </HeaderMenuWrapper>
         </MainHeader>

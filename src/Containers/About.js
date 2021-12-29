@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Header } from "../Components/Header";
+import { Helmet } from "react-helmet";
+
 
 
 
 const About = () => {
   return (
+    
     <div>
+        <Helmet>
+          <title>{"About"}</title>
+        </Helmet>
         <Header />
         <div class = "page">
             

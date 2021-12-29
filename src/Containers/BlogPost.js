@@ -6,6 +6,8 @@ import { GithubSelector, GithubCounter } from "react-reactions";
 import { userClient } from '../Utils/apollo'
 import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
+import { Helmet } from "react-helmet";
+
 
 import { config } from "../config";
 import { getEmojiByName, getNameByEmoji } from '../Utils/emoji';
@@ -15,6 +17,7 @@ import { PostContainer, PostTitle, PostDate, PostDateLink, PostReaction, BackBut
 import { HyperLink, CodeBlock } from '../Components/Markdown/Overrides';
 
 import { Header } from "../Components/Header";
+import { SubscribeButton, SubscribeContainer } from "../Components/Subscribe";
 
 export default function BlogHome() {
   const issueNumber = parseInt(window.location.href.split("/").pop());
@@ -41,6 +44,7 @@ export default function BlogHome() {
           }
         }
         updatedAt
+        createdAt
         id
       }
     }
@@ -63,6 +67,8 @@ export default function BlogHome() {
         const issues = data.repository.issue;
         setPostNodeId(issues.id);
         setPost(issues);
+        var postTitle = data.repository.issue.title
+        document.title = postTitle;
       }
     }
   }, [loading, error, data]);
@@ -76,7 +82,7 @@ export default function BlogHome() {
   }
 
   var getDate = (blog) => {
-    var timestamp = blog.updatedAt;
+    var timestamp = blog.createdAt;
     return moment(timestamp).format(" MMM DD, YYYY")
   }
 
@@ -94,7 +100,12 @@ export default function BlogHome() {
 
   return (
     <>
-      <head><title>{post.title}</title></head>
+      <Helmet>
+          <title>{post.title}</title>
+          <meta charSet="utf-8" />
+          <meta name="description" content={config.subtitle} />
+          <meta name="theme-color" content={config.header.backgroundColor} />
+      </Helmet>
       <Header />
       {post.title && (
         <PostContainer>
@@ -118,6 +129,11 @@ export default function BlogHome() {
           >
             {post.body}
           </Markdown>
+          <SubscribeContainer>
+            <h1>❤️ Enjoying the blog?</h1>
+            <p>If you’d like to notified of future posts every other week, subscribe below</p>
+            <SubscribeButton category = {getCategory(post)} />
+          </SubscribeContainer>
         </PostContainer>
       )}
     </>
