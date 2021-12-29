@@ -1,9 +1,15 @@
 import styled from 'styled-components'
 
 export const PostContainer = styled.div`
-  margin: 2rem auto 0;
-  width: 90%;
-  max-width: 700px;
-  padding: 20px 10px;
-  position: relative;
+  img {
+    max-width:100%;
+  }
+
+  blockquote {
+    overflow-wrap: break-word;
+    margin: 30px 0 33px;
+    padding: 0 0 0 1em;
+    border-left: 0.25em solid #6F92ED;
+  }
+  
 `

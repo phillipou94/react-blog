@@ -11,11 +11,10 @@ import { config } from "../config";
 import { getEmojiByName, getNameByEmoji } from '../Utils/emoji';
 import { getAuthenticatedUser } from '../Utils/auth'
 import { Loader } from "../Components/Common";
-import { PostContainer, PostTitle, PostDate, PostDateLink, PostReaction, BackButton } from "../Components/Post";
-import { AuthorDetails, AuthorAvatar, AuthorName } from "../Components/Post/Author";
-import { GithubLogin } from '../Components/Header'
+import { PostContainer, PostTitle, PostDate, PostDateLink, PostReaction, BackButton, PostHeader, PostMetadata, PostCategory } from "../Components/Post";
 import { HyperLink, CodeBlock } from '../Components/Markdown/Overrides';
-import CommentsSection from "./CommentsSection";
+
+import { Header } from "../Components/Header";
 
 export default function BlogHome() {
   const issueNumber = parseInt(window.location.href.split("/").pop());
@@ -156,6 +155,15 @@ export default function BlogHome() {
     return <Loader />;
   }
 
+  var getReadingTime = (text) => {
+    return Math.round(readingTime(text).minutes)
+  }
+
+  var getDate = (blog) => {
+    var timestamp = blog.updatedAt;
+    return moment(timestamp).format(" MMM DD, YYYY")
+  }
+
   const onBackClick = () => {
     // ifthe previous page does not exist in the history list. this method to load the previous (or next) URL in the history list.
     window.history.go();
@@ -165,25 +173,15 @@ export default function BlogHome() {
 
   return (
     <>
+      <head><title>{post.title}</title></head>
+      <Header />
       {post.title && (
         <PostContainer>
-          <BackButton onClick={() => onBackClick()}>Back</BackButton>
-
-          <PostTitle>{post.title}</PostTitle>
-          <div>
-            <AuthorDetails>
-              <AuthorAvatar src={post.author.avatarUrl} alt={post.author.login} />
-              <div>
-                <AuthorName>{post.author.login}</AuthorName>
-                <PostDate>
-                  {moment(post.updatedAt).format("DD MMM YYYY")} .{readingTime(post.body).minutes} Min Read .
-                  <PostDateLink href={post.url} target="_black">
-                    View On Github
-                  </PostDateLink>
-                </PostDate>
-              </div>
-            </AuthorDetails>
-          </div>
+          <PostHeader>
+            <PostTitle>{post.title}</PostTitle>
+            <PostMetadata date = {getDate(post)} time = {getReadingTime(post.body)}></PostMetadata>
+          </PostHeader>
+          
           <Markdown
             options={{
               overrides: {
@@ -198,17 +196,6 @@ export default function BlogHome() {
           >
             {post.body}
           </Markdown>
-          {reactionPopup && (
-            <PostReaction>
-            </PostReaction>
-          )}
-          <GithubCounter
-            ref={reactionsContainer}
-            counters={postReactions}
-            onSelect={emoji => toggleReaction(emoji)}
-            onAdd={() => setReactionPopup(!reactionPopup)}
-          />
-          <CommentsSection postUrl={post.url} comments={postComments} />
         </PostContainer>
       )}
     </>
