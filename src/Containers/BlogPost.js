@@ -129,6 +129,7 @@ export default function BlogHome() {
           >
             {post.body}
           </Markdown>
+          <hr />
           <SubscribeContainer>
             <h1>❤️ Enjoying the blog?</h1>
             <p>If you’d like to notified of future posts every other week, subscribe below</p>
