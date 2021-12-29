@@ -20,6 +20,7 @@ const Application = () => {
   if (urlParams.get('code')) {
     return <GithubCallback />
   }
+  
 
   return (
     <>
