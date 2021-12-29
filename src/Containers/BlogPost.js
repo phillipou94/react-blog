@@ -33,38 +33,20 @@ export default function BlogHome() {
           avatarUrl
           login
         }
-        reactions(first:100){
-          nodes{
-            content
-            user{
-              id
-              login
-            }
+        labels(first: 100) {
+          nodes {
+            color
+            name
+            id
           }
         }
         updatedAt
         id
-        comments(first:100) {
-          nodes {
-            author {
-              ... on User {
-                avatarUrl
-                name
-                login
-              }
-            }
-            body
-            bodyHTML
-            bodyText
-            publishedAt
-            updatedAt
-          }
-        }
       }
     }
   }
   `;
-  const [post, setPost] = useState([]);
+  const [post, setPost, setLabels] = useState([]);
   const [postNodeId, setPostNodeId] = useState('');
   const [reactionPopup, setReactionPopup] = useState(false);
   const [postReactions, setPostReactions] = useState([]);
@@ -73,71 +55,7 @@ export default function BlogHome() {
   const reactionsContainer = useRef(null);
   const userToken = localStorage.getItem('githubToken');
 
-  const setReactionFun = useCallback((reactions) => {
-    // {
-    //   emoji: "👍", // String emoji reaction
-    //   by: "case" // String of persons name
-    // }
 
-    let reactions_array = [];
-    reactions.forEach(element => {
-      let obj = {
-        by: element.user.login,
-        emoji: getEmojiByName(element.content)
-      };
-      reactions_array.push(obj);
-    });
-
-    setPostReactions(reactions_array);
-  }, []);
-
-  const toggleReaction = async (emoji) => {
-    let reactions = postReactions;
-    const user = await getAuthenticatedUser();
-    const existingReaction = reactions.filter(r => (r.emoji === emoji && r.by === user.login))
-
-    if (existingReaction.length === 0) {
-      const reactionToAdd = {
-        by: user.login,
-        emoji: emoji,
-      }
-
-      // Add the reaction
-      await userClient(userToken).mutate({
-        mutation: gql`
-          mutation AddReaction {
-            addReaction(input:{subjectId:"${postNodeId}",content:${getNameByEmoji(emoji)},clientMutationId:"${user.node_id}"}) {
-              reaction {
-                id
-              }
-            }
-          }
-        `
-      });
-
-      reactions.push(reactionToAdd);
-    } else {
-      // Remove the reaction
-      await userClient(userToken).mutate({
-        mutation: gql`
-          mutation RemoveReaction {
-            removeReaction(input:{subjectId:"${postNodeId}",content:${getNameByEmoji(emoji)},clientMutationId:"${user.node_id}"}) {
-              reaction {
-                id
-              }
-            }
-          }
-        `
-      });
-
-      // Remove the reaction from the state
-      reactions = reactions.filter(r => !(r.by === user.login && r.emoji === emoji))
-    }
-
-    setPostReactions(reactions);
-    reactionsContainer.current.forceUpdate(); // refresh the counter
-    setReactionPopup(false); // hiding the reactions choice
-  }
 
   useEffect(() => {
     if (!loading) {
@@ -145,11 +63,9 @@ export default function BlogHome() {
         const issues = data.repository.issue;
         setPostNodeId(issues.id);
         setPost(issues);
-        setReactionFun(issues.reactions.nodes);
-        setPostComments(issues.comments.nodes);
       }
     }
-  }, [loading, error, data, setReactionFun]);
+  }, [loading, error, data]);
 
   if (loading) {
     return <Loader />;
@@ -164,12 +80,17 @@ export default function BlogHome() {
     return moment(timestamp).format(" MMM DD, YYYY")
   }
 
-  const onBackClick = () => {
-    // ifthe previous page does not exist in the history list. this method to load the previous (or next) URL in the history list.
-    window.history.go();
-    // The back() method loads the previous URL in the history list.
-    window.history.back();
-  };
+  var getCategory = (blog) => {
+    const labels = blog.labels.nodes.filter((value) => {
+      return value.name !== "blog";
+    });
+    if (labels.length > 0) {
+      var node = labels[0]
+      return node.name
+    }
+    
+    return "";
+  }
 
   return (
     <>
@@ -178,6 +99,7 @@ export default function BlogHome() {
       {post.title && (
         <PostContainer>
           <PostHeader>
+            <PostCategory category = {getCategory(post)} />
             <PostTitle>{post.title}</PostTitle>
             <PostMetadata date = {getDate(post)} time = {getReadingTime(post.body)}></PostMetadata>
           </PostHeader>

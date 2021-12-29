@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import AvatarSrc from '../../Assets/phil_avatar.png'
 
 import {
@@ -12,6 +12,9 @@ import { config } from "../../config"
 import { HeaderMenuItem } from './HeaderMenuItem'
 
 export const Header = () => {
+
+
+
     return (
         <MainHeader>
             <TitleWrapper>
@@ -19,9 +22,9 @@ export const Header = () => {
                 <HeaderTitle>{config.title}</HeaderTitle>
             </TitleWrapper>
             <HeaderMenuWrapper>
-                <HeaderMenuItem menu_item_title={"Blog"} path="#"></HeaderMenuItem>
-                <HeaderMenuItem menu_item_title={"About"} path="#"></HeaderMenuItem>
-                <HeaderMenuItem menu_item_title={"Coaching"} path="#"></HeaderMenuItem>
+            <HeaderMenuItem menu_item_title={"Blog"} path="/" ></HeaderMenuItem>
+                <HeaderMenuItem menu_item_title={"About"} path={"/about"}></HeaderMenuItem>
+                <HeaderMenuItem menu_item_title={"Coaching"} path="/coaching"></HeaderMenuItem>
             </HeaderMenuWrapper>
         </MainHeader>
     )

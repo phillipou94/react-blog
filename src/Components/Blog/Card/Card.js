@@ -17,7 +17,7 @@ export const Card = ({ blog }) => {
   const history = useHistory();
 
   const openBlog = (title, number) => {
-    history.push(`/blog/${title}/${number}`);
+    history.replace(`/blog/${title}/${number}`);
   }
 
   useEffect(() => {
@@ -56,24 +56,3 @@ export const Card = ({ blog }) => {
     </PostPreview>
   );
 }
-
-
-// return (
-//   <PostPreview>
-//     <CardHeader>
-//       {labels.map((value, i) => {
-//         return (
-//           <CardCategory value={value} key={i} />
-//         );
-//       })}
-//       <CardReadingTime time={readingTime(blog.body).minutes} />
-//     </CardHeader>
-//     <div onClick={() => openBlog(blog.title, blog.number)}>
-//       <CardTitle>{blog.title}</CardTitle>
-//       <CardDescription>
-//         {blog.bodyText}
-//       </CardDescription>
-//     </div>
-//   </PostPreview>
-// );
- 

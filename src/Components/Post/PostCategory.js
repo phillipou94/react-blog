@@ -6,6 +6,7 @@ const StyledCategory = styled.a`
     text-decoration: none;
     :hover {
       text-decoration: underline;
+      cursor:pointer;
     }
 `
 
