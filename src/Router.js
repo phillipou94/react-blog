@@ -16,7 +16,7 @@ const Router = () => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Blog} />
-        <Route exact path="/:category?/:page_number?" component={Blog} />
+        <Route exact path={["/blog/:category?/:page_number?"]} component={Blog} />
         <Route exact path="/about" component = {About} />
         <Route exact path="/post/:title/:issueNumber" component={BlogPost}/>
         

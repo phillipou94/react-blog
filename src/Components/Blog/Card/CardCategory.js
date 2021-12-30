@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const StyledCategory = styled.a`
+const StyledCategory = styled.div`
   font-size:0.8em;
   font-family: 'Raleway', sans-serif;
   color:#6F92ED;
@@ -18,7 +18,7 @@ const StyledCategory = styled.a`
 `
 
 export const CardCategory = ({ value }) => (
-  <StyledCategory key={value.id} href="#">
+  <StyledCategory key={value.id}>
     {value.name}
   </StyledCategory>
 )

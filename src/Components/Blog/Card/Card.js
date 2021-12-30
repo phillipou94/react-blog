@@ -20,6 +20,11 @@ export const Card = ({ blog }) => {
     history.push(`/post/${title}/${number}`);
   }
 
+  const openCategory = (category) => {
+    console.log("category")
+    history.push(`/blog/${category}`);
+  }
+
   useEffect(() => {
     const labels = blog.labels.nodes.filter((value) => {
       return value.name !== "blog";
@@ -42,7 +47,9 @@ export const Card = ({ blog }) => {
       <CardHeader>
         {labels.map((value, i) => {
           return (
-            <CardCategory value={value} key={i} />
+            <div onClick={() => openCategory(value.name)}>
+              <CardCategory value={value} key={i} />
+            </div>
           );
         })}
       </CardHeader>

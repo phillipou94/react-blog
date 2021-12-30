@@ -3,54 +3,61 @@ import { gql } from "apollo-boost";
 import { useQuery } from '@apollo/react-hooks';
 import { useParams } from "react-router-dom";
 
-import { Helmet } from "react-helmet";
-
 
 import { config } from "../config";
 import { Header } from "../Components/Header";
 import { Loader } from '../Components/Common'
-import { BlogContainer } from '../Components/Blog'
+import { BlogCategoryTitle, BlogContainer } from '../Components/Blog'
 import { Card } from '../Components/Blog/Card'
 
-const GET_POSTS = gql`
-{
-  repository(owner: "${config.githubUserName}", name: "${config.githubRepo}") {
-    issues(first: 100, states: OPEN, filterBy: { labels: "blog" }, orderBy: { direction: DESC, field: CREATED_AT }) {
-      nodes {
-        title
-        body
-        bodyHTML
-        bodyText
-        number
-        labels(first: 100) {
+const posts_per_page = 10;
+
+const constructQuery = (category, page_number) => {
+  var label_category = (typeof category == 'undefined') ? "blog" : category;
+
+  var i = (typeof page_number === 'undefined') ? 1 : page_number;
+  
+  return gql`
+    {
+      repository(owner: "${config.githubUserName}", name: "${config.githubRepo}") {
+        issues(first: 100, states: OPEN, filterBy: { labels: "${label_category}" }, orderBy: { direction: DESC, field: CREATED_AT }) {
           nodes {
-            color
-            name
+            title
+            body
+            bodyHTML
+            bodyText
+            number
+            labels(first: 100) {
+              nodes {
+                color
+                name
+                id
+              }
+            }
+            author {
+              url
+              avatarUrl
+              login
+            }
+            updatedAt
+            createdAt
             id
           }
         }
-        author {
-          url
-          avatarUrl
-          login
-        }
-        updatedAt
-        createdAt
-        id
       }
     }
-  }
-}
-`
+    `
 
+}
 const Blog = () => {
   const [posts, setPosts] = useState([]);
-  const { loading, error, data } = useQuery(GET_POSTS);
+  
   const { category, page_number } = useParams();
 
-  console.log({category, page_number});
-  
+  const query = constructQuery(category,page_number);
 
+  const { loading, error, data } = useQuery(query);
+  
 
 
   useEffect(() => {
@@ -61,16 +68,20 @@ const Blog = () => {
       }
 
       if (data) {
-
+        console.log(data)
         setPosts(data?.repository?.issues?.nodes)
       }
     }
   }, [loading, error, data]);
 
+  const pageTitle = (typeof category == 'undefined' || category == "blog") ? "Recent Posts" : category;
+
   return (
     <>
       <Header />
+      <BlogCategoryTitle>{pageTitle}</BlogCategoryTitle>
       <BlogContainer>
+        
         {
           loading
           ? <Loader />
