@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { gql } from "apollo-boost";
 import { useQuery } from '@apollo/react-hooks';
+import { useParams } from "react-router-dom";
+
 import { Helmet } from "react-helmet";
 
 
@@ -44,6 +46,12 @@ const GET_POSTS = gql`
 const Blog = () => {
   const [posts, setPosts] = useState([]);
   const { loading, error, data } = useQuery(GET_POSTS);
+  const { category, page_number } = useParams();
+
+  console.log({category, page_number});
+  
+
+
 
   useEffect(() => {
     if (!loading) {
@@ -53,6 +61,7 @@ const Blog = () => {
       }
 
       if (data) {
+
         setPosts(data?.repository?.issues?.nodes)
       }
     }
