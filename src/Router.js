@@ -17,7 +17,7 @@ const Router = () => {
       <Switch>
         <Route exact path="/" component={Blog} />
         <Route path="/about" component = {About} />
-        <Route exact path="/blog/:title/:issueNumber" component={BlogPost}/>
+        <Route exact path="/post/:title/:issueNumber" component={BlogPost}/>
         
       </Switch>
     </BrowserRouter>
