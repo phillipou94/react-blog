@@ -18,6 +18,7 @@ import { HyperLink, CodeBlock } from '../Components/Markdown/Overrides';
 
 import { Header } from "../Components/Header";
 import { SubscribeButton, SubscribeContainer } from "../Components/Subscribe";
+import { useHistory } from "react-router-dom";
 
 export default function BlogHome() {
   const issueNumber = parseInt(window.location.href.split("/").pop());
@@ -52,12 +53,8 @@ export default function BlogHome() {
   `;
   const [post, setPost, setLabels] = useState([]);
   const [postNodeId, setPostNodeId] = useState('');
-  const [reactionPopup, setReactionPopup] = useState(false);
-  const [postReactions, setPostReactions] = useState([]);
-  const [postComments, setPostComments] = useState([]);
+  const history = useHistory();
   const { loading, error, data } = useQuery(GET_POSTS);
-  const reactionsContainer = useRef(null);
-  const userToken = localStorage.getItem('githubToken');
 
 
 
@@ -98,6 +95,12 @@ export default function BlogHome() {
     return "";
   }
 
+  const openCategory = (category) => {
+    console.log("category")
+    history.push(`/blog/${category}`);
+  }
+
+
   return (
     <>
       <Helmet>
@@ -110,7 +113,9 @@ export default function BlogHome() {
       {post.title && (
         <PostContainer>
           <PostHeader>
-            <PostCategory category = {getCategory(post)} />
+            <div onClick={() => openCategory(getCategory(post))}>
+              <PostCategory category = {getCategory(post)} />
+            </div>
             <PostTitle>{post.title}</PostTitle>
             <PostMetadata date = {getDate(post)} time = {getReadingTime(post.body)}></PostMetadata>
           </PostHeader>
