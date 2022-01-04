@@ -7,7 +7,8 @@ import { useParams } from "react-router-dom";
 import { config } from "../config";
 import { Header } from "../Components/Header";
 import { Loader } from '../Components/Common'
-import { BlogCategoryTitle, BlogContainer } from '../Components/Blog'
+import { Footer } from '../Components/Footer'
+import { PageTitle, BlogContainer } from '../Components/Blog'
 import { Card } from '../Components/Blog/Card'
 
 const posts_per_page = 10;
@@ -79,7 +80,7 @@ const Blog = () => {
   return (
     <>
       <Header />
-      <BlogCategoryTitle>{pageTitle}</BlogCategoryTitle>
+      <PageTitle>{pageTitle}</PageTitle>
       <BlogContainer>
         
         {
@@ -90,6 +91,7 @@ const Blog = () => {
             })
         }
       </BlogContainer>
+      <Footer />
     </>
   );
 }

@@ -19,7 +19,7 @@ const SubscribeButtonStyle = styled.button`
     }
 `
 const openBlog = (category) => {
-    var url = "https://philsrandomwalk.substack.com/subscribe?"
+    var url = "https://bookie.substack.com/subscribe?"
     window.location.href=url;
   }
 
