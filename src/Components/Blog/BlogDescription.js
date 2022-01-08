@@ -9,4 +9,7 @@ export const BlogDescription = styled.div`
         font-style: italic;
         font-size:15px;
     }
+    a { 
+        color:black;
+      }
 `

@@ -18,7 +18,7 @@ const Router = () => {
       <Switch>
         <Route exact path="/" component={Blog} />
         <Route exact path={["/blog/:category?/:page_number?"]} component={Blog} />
-        <Route exact path="/about" component = {About} />
+        {/* <Route exact path="/about" component = {About} /> */}
         <Route exact path="/experience" component = {Experience} />
         <Route exact path="/post/:title/:issueNumber" component={BlogPost}/>
         

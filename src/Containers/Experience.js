@@ -42,8 +42,10 @@ const Experience = () => {
                 </ExperienceCardHeader>
                 <ExperienceCardJob>Product Manager | Conversation Experience | Aug. 2019 - Current</ExperienceCardJob>
                 <ExperienceCardDescription>
-                    <p> Messages is Android’s default consumer messaging and texting app. I lead a team of 25 engineers and 4 Designers responsible for building experiences related to conversation, composition, and sharing. </p>      
-                    <p>During my tenure, we increased RCS Adoption, launched Reactions and a number of other features focused on self-expression</p>
+                    <p>I lead a team of 20 engineers and 3 Designers responsible for building experiences related to conversation, composition, and sharing. </p>
+                    <p> Ultimately, we try to answer: "What does it mean for you to feel connected to someone you're talking to?" and build experiences that facilitate that connection.</p>
+                    <p>During my tenure, we <a target="_blank" rel="noopener noreferrer" href="https://www.theverge.com/2019/11/14/20964477/googles-rcs-chat-android-rollout-us-ccmi-texting-sms"> increased RCS Adoption</a>, 
+                        launched <a target="_blank" rel="noopener noreferrer" href="https://www.theverge.com/2020/5/13/21256975/google-android-messages-rcs-emoji-reactions-test">Reactions</a> and a number of other features focused on self-expression</p>
                 </ExperienceCardDescription>
             </ExperienceCard>
 
@@ -54,8 +56,9 @@ const Experience = () => {
                 </ExperienceCardHeader>
                 <ExperienceCardJob>Product Manager | Ads Platform | Aug. 2018 - Aug 2019</ExperienceCardJob>
                 <ExperienceCardDescription>
-                    <p> Messages is Android’s default consumer messaging and texting app. I lead a team of 25 engineers and 4 Designers responsible for building experiences related to conversation, composition, and sharing. </p>      
-                    <p>During my tenure, we increased RCS Adoption, launched Reactions and a number of other features focused on self-expression</p>
+                    <p>I was the PM responsible for launching <a href="https://adage.com/article/special-report-newfronts/youtube-selling-ads-live-tv-service/313284"> YouTube TV’s advertising platform</a>. 
+                    During my time there, the team launched Dynamic Ad Insertion (seamlessly stitching personalized ads onto a live television stream) and onboarded broadcasters to enable live TV ad serving.</p>      
+                    <p>We also launched a number of <a target="_blank" rel="noopener noreferrer" href="https://ppcexpo.com/blog/youtube-tv-ads"> advertiser-facing features </a> ahead of the 2019 Upfronts Season such as: advanced ad targeting & reporting, campaign forecasting, and program exclusions (the first DMVPD to offer this functionality).</p>
                 </ExperienceCardDescription>
             </ExperienceCard>            
             
@@ -66,7 +69,7 @@ const Experience = () => {
                 </ExperienceCardHeader>
                 <ExperienceCardJob>PM Intern | Events Search | Jun 2017 - Sep 2017</ExperienceCardJob>
                 <ExperienceCardDescription>
-                    <p> I led a team of engineers and designers to redesign the mobile search experience for users who look up concerts, festivals and events. The project was featured on TechCrunch and The Verge.</p>      
+                    <p> I led a team of engineers and designers to redesign the mobile search experience for users who look up concerts, festivals and events.  <a target="_blank" rel="noopener noreferrer" href="https://techcrunch.com/2018/07/26/google-revamps-local-events-search-to-include-personalized-suggestions/">TechCrunch</a>                    and <a target="_blank" rel="noopener noreferrer" href="https://www.theverge.com/2018/7/26/17617522/google-search-events-recommendations-interest-based">The Verge</a>.</p>      
                 </ExperienceCardDescription>
             </ExperienceCard>   
 
@@ -102,7 +105,8 @@ const Experience = () => {
                 <ExperienceCardJob>Software Engineering Intern | Identity | Jun 2015 - Aug 2015</ExperienceCardJob>
                 <ExperienceCardDescription>
                     <p> I was a member of the Snapchat Identity Team focused on user profiles and implemeneted the Add Nearby Feature for iOS and Android.</p>    
-                    <p> I was also the sole developer for the Trophy Case feature, implementing the entire feature across iOS, Android, and the Java Backend</p>  
+                    <p> I was also the sole developer for the <a target="_blank" rel="noopener noreferrer" href="https://www.theverge.com/2018/7/26/17617522/google-search-events-recommendations-interest-based"> Trophy Case</a> feature, 
+                        implementing the entire project across iOS, Android, and the Java Backend</p>  
                 </ExperienceCardDescription>
             </ExperienceCard> 
 

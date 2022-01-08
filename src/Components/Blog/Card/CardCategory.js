@@ -9,6 +9,7 @@ const StyledCategory = styled.div`
   :visited {
     font-size:0.75em;
     font-family: 'Raleway', sans-serif;
+    font-weight:200;
     color:#6F92ED;
     text-decoration: none;
   }
