@@ -4,6 +4,7 @@ import styled from 'styled-components'
 const Metadata = styled.div`
     font-size:0.8em;
     font-family: 'Raleway', sans-serif;
+    color:#969696;
 `
 
 

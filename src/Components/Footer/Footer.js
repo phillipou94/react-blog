@@ -19,7 +19,6 @@ const FooterWrapper = styled.div`
     display:flex;
     justify-content: center;
     align-items: center;
-    border-top: 1px solid #474747;
 `
 
 
