@@ -14,7 +14,7 @@ import Experience from "./Containers/Experience";
 
 const Router = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route exact path="/" component={Blog} />
         <Route exact path={["/blog/:category?/:page_number?"]} component={Blog} />
