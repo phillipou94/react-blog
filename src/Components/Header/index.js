@@ -1,7 +1,0 @@
-export { MainHeader } from './MainHeader'
-export { TitleWrapper } from './TitleWrapper'
-export { HeaderAvatar } from './HeaderAvatar'
-export { HeaderTitle } from './HeaderTitle'
-export { HeaderMenuWrapper } from './HeaderMenuWrapper'
-export { HeaderMenuItem } from './HeaderMenuItem'
-export { Header } from './Header'
