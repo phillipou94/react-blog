@@ -8,7 +8,7 @@ import { config } from "../config";
 import { Header } from "../Components/Header";
 import { Loader } from '../Components/Common'
 import { Footer } from '../Components/Footer'
-import { PageTitle, BlogContainer } from '../Components/Blog'
+import { PageTitle, BlogContainer, BlogDescription, SectionTitle } from '../Components/Blog'
 import { Card } from '../Components/Blog/Card'
 
 const posts_per_page = 10;
@@ -75,21 +75,34 @@ const Blog = () => {
     }
   }, [loading, error, data]);
 
-  const pageTitle = (typeof category == 'undefined' || category == "blog") ? "Recent Posts" : category;
+  var is_default_page = (typeof category == 'undefined' || category == "blog");
+
+  const sectionTitle = is_default_page ? "Recent Posts" : category;
 
   return (
     <>
       <Header />
-      <PageTitle>{pageTitle}</PageTitle>
       <BlogContainer>
-        
-        {
-          loading
-          ? <Loader />
-          : posts.map((v, i) => {
-              return <Card blog={v} key={i} />;
-            })
+        {is_default_page &&
+          <PageTitle>Blog</PageTitle>
         }
+        {is_default_page && 
+          <BlogDescription>
+              <p>Hi there 👋!</p>
+              <p>I’m Phil. I’m a Product Manager at Google and, on nights and weekends, I coach and mentor current/aspiring PMs.</p>
+              <p>This is humble diary of ideas I’m thinking through “out loud”. Generally, I roam over subjects like technology, economics, personal development, and current events.</p>
+              <p>I won’t claim to be an expert in any of these topics but they’re all personally interesting to me and I hope writing about them will help clarify my own thinking and point of view.</p>
+              <p>This will mostly be a self-serving venture but maybe—just maybe—you’ll benefit from it as much as I do 🙂</p>
+          </BlogDescription>
+        }
+        <SectionTitle>{sectionTitle}</SectionTitle>
+          {
+            loading
+            ? <Loader />
+            : posts.map((v, i) => {
+                return <Card blog={v} key={i} />;
+              })
+          }
       </BlogContainer>
       <Footer />
     </>
