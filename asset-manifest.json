@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/react-blog/static/css/main.3d4270e4.chunk.css",
+    "main.js": "/react-blog/static/js/main.e98fe31a.chunk.js",
+    "main.js.map": "/react-blog/static/js/main.e98fe31a.chunk.js.map",
+    "runtime-main.js": "/react-blog/static/js/runtime-main.635d1ba4.js",
+    "runtime-main.js.map": "/react-blog/static/js/runtime-main.635d1ba4.js.map",
+    "static/js/2.1ed014a8.chunk.js": "/react-blog/static/js/2.1ed014a8.chunk.js",
+    "static/js/2.1ed014a8.chunk.js.map": "/react-blog/static/js/2.1ed014a8.chunk.js.map",
+    "index.html": "/react-blog/index.html",
+    "precache-manifest.6ede993879c3ec39702f2e84bb883496.js": "/react-blog/precache-manifest.6ede993879c3ec39702f2e84bb883496.js",
+    "service-worker.js": "/react-blog/service-worker.js",
+    "static/css/main.3d4270e4.chunk.css.map": "/react-blog/static/css/main.3d4270e4.chunk.css.map",
+    "static/js/2.1ed014a8.chunk.js.LICENSE": "/react-blog/static/js/2.1ed014a8.chunk.js.LICENSE",
+    "static/media/Facebook-black.svg": "/react-blog/static/media/Facebook-black.f6268ab5.svg",
+    "static/media/Linkedin-black.svg": "/react-blog/static/media/Linkedin-black.21d75061.svg",
+    "static/media/google_logo.png": "/react-blog/static/media/google_logo.0dd54f85.png",
+    "static/media/google_photos_logo.png": "/react-blog/static/media/google_photos_logo.b41a6558.png",
+    "static/media/messages_logo.png": "/react-blog/static/media/messages_logo.754b96bd.png",
+    "static/media/phil_avatar.png": "/react-blog/static/media/phil_avatar.91359199.png",
+    "static/media/snapchat_logo.jpg": "/react-blog/static/media/snapchat_logo.73f05487.jpg",
+    "static/media/substack.svg": "/react-blog/static/media/substack.cb5fe06c.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.635d1ba4.js",
+    "static/js/2.1ed014a8.chunk.js",
+    "static/css/main.3d4270e4.chunk.css",
+    "static/js/main.e98fe31a.chunk.js"
+  ]
+}
